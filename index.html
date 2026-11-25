@@ -131,6 +131,7 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
       </div>
       <div class="actions no-print">
         <button class="btn primary" type="button" id="printBtn">Imprimir convocatoria</button>
+        <button class="btn" style="background:#25D366;color:#fff" type="button" id="whatsappBtn">Compartir por WhatsApp</button>
         <button class="btn secondary" type="button" id="clearCall">Vaciar convocatoria</button>
       </div>
     </div>
@@ -189,6 +190,26 @@ window.togglePlayer=(id,checked)=>{if(checked){if(selected.length>=18){alert('La
 $('cancelEdit').onclick=resetForm;
 $('clearCall').onclick=()=>{selected=[];renderCall();};
 $('printBtn').onclick=()=>window.print();
+$('whatsappBtn').onclick=()=>{
+ const order=['Portero','Defensa','Centrocampista','Delantero'];
+ const chosen=selected.map(id=>players.find(p=>p.id===id)).filter(Boolean);
+ const date=$('matchDate').value?new Date($('matchDate').value+'T12:00:00').toLocaleDateString('es-ES'):'Sin indicar';
+ const place=$('matchPlace').value.trim()||'Sin indicar';
+ const time=$('meetingTime').value||'Sin indicar';
+ let message='⚽ *ESCUELA CADISTA PR*\\n*CONVOCATORIA*\\n\\n';
+ message+='📅 Fecha: '+date+'\\n📍 Lugar: '+place+'\\n🕒 Hora de citación: '+time+'\\n\\n';
+ message+='*JUGADORES CONVOCADOS ('+chosen.length+'/18)*\\n';
+ order.forEach(pos=>{
+   const group=chosen.filter(p=>p.position===pos);
+   if(group.length){
+     message+='\\n*'+pos.toUpperCase()+'*\\n';
+     group.forEach((p,i)=>message+=(i+1)+'. '+p.first+' '+p.last+'\\n');
+   }
+ });
+ if(!chosen.length)message+='\\nTodavía no hay jugadores seleccionados.';
+ const url='https://wa.me/?text='+encodeURIComponent(message);
+ window.open(url,'_blank','noopener,noreferrer');
+};
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));}));
 $('matchDate').value=matchInfo.date||'';
 $('matchPlace').value=matchInfo.place||'';
