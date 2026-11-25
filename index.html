@@ -1,86 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Guardada - index-v2</title>
-  <style>
-    :root {
-      --bg: #f6f8fb;
-      --card: #ffffff;
-      --text: #1b2430;
-      --muted: #5c6b7f;
-      --accent: #2563eb;
-      --border: #e2e8f0;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 24px 16px;
-    }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
-    }
-    .badge {
-      display: inline-block;
-      background: #eff6ff;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-    }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 1.6rem;
-    }
-    p {
-      margin: 0 0 14px;
-      color: var(--muted);
-    }
-    .note {
-      background: #f8fafc;
-      border-left: 4px solid var(--accent);
-      padding: 14px 16px;
-      border-radius: 8px;
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-    footer {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102b50">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Cadista P.R. Senior</title>
+<style>
+:root{--navy:#102b50;--blue:#174477;--yellow:#f4cf32;--bg:#f3f6fa;--ink:#172438;--muted:#6c7a8d;--line:#e2e8f0;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:linear-gradient(120deg,var(--navy),var(--blue));color:white;padding:20px max(18px,calc((100vw - 1180px)/2));border-bottom:5px solid var(--yellow)}
+.brand{display:flex;align-items:center;gap:13px}.crest-img{width:58px;height:58px;object-fit:contain;border-radius:50%;background:#fff;border:2px solid var(--yellow);padding:2px}
+h1{font-size:21px;margin:0;letter-spacing:.2px}header p{margin:3px 0 0;color:#d7e2ef;font-size:13px}
+.shell{max-width:1180px;margin:auto;padding:18px;display:grid;grid-template-columns:220px 1fr;gap:18px}
+nav{background:white;border:1px solid var(--line);border-radius:16px;padding:10px;height:max-content;position:sticky;top:12px}
+nav button{width:100%;text-align:left;border:0;background:transparent;padding:11px 12px;border-radius:10px;color:#435268;font-weight:650;cursor:pointer;margin:2px 0}
+nav button.active,nav button:hover{background:#edf3fa;color:var(--navy)}nav button.active{border-left:4px solid var(--yellow)}
+main{min-width:0}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:2px 0 15px}h2{margin:0;font-size:23px;color:var(--navy)}.sub{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.card,.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:0 2px 8px #102b5008}
+.metric{font-size:27px;font-weight:800;color:var(--navy)}.metric-label{color:var(--muted);font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.5px}
+.panel{margin-bottom:14px}.panel h3{margin:0 0 12px;color:var(--navy);font-size:16px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:9px;background:var(--navy);color:white;padding:10px 14px;font-weight:700;cursor:pointer}.btn.yellow{background:var(--yellow);color:var(--navy)}.btn.light{background:#edf3fa;color:var(--navy)}.btn.danger{background:#b42318}.btn.small{padding:6px 9px;font-size:12px}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid #d5deea;border-radius:9px;font:inherit;background:white;color:var(--ink)}textarea{min-height:76px;resize:vertical}label{display:block;font-size:12px;color:#526176;font-weight:700;margin:0 0 5px}.field{margin-bottom:11px}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.tag{display:inline-block;border-radius:20px;background:#edf3fa;color:var(--navy);padding:3px 8px;font-size:11px;font-weight:700}.empty{color:var(--muted);padding:16px 4px;text-align:center}
+.notice{background:#fff8d9;border:1px solid #f2df8a;border-radius:12px;padding:12px;color:#6b5710;font-size:13px;margin-bottom:14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.hidden{display:none!important}.muted{color:var(--muted)}
+.list{display:grid;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.modal{position:fixed;inset:0;background:#07172bb3;display:grid;place-items:center;padding:16px;z-index:5}.dialog{background:white;border-radius:16px;padding:20px;width:min(540px,100%);max-height:90vh;overflow:auto}.dialog h3{margin:0 0 15px;color:var(--navy)}.dialogfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+footer{max-width:1180px;margin:0 auto;padding:0 18px 25px;color:var(--muted);font-size:12px}
+@media(max-width:800px){.shell{grid-template-columns:1fr;padding:12px}nav{position:static;display:flex;overflow:auto;gap:4px;padding:7px}nav button{white-space:nowrap;width:auto;padding:9px 11px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.topline{align-items:flex-start;flex-direction:column}.formgrid{grid-template-columns:1fr}header{padding:16px}.brand{gap:10px}}
+@media(max-width:430px){h1{font-size:18px}.metric{font-size:23px}table{font-size:12px}th,td{padding:8px 5px}}
+</style>
 </head>
 <body>
-  <main class="container">
-    <span class="badge">index-v2 · Paquete ZIP</span>
-    <h1>Archivo web guardado (index-v2)</h1>
-    <p>
-      Este paquete ZIP incluye una plantilla web base (<code>index.html</code>) lista para guardar,
-      abrir sin conexión o editar en tu móvil.
-    </p>
-    <div class="note">
-      <strong>Consejo:</strong> Si querías guardar una página web concreta o un código específico que ya tenías,
-      puedes pegar el enlace o el contenido aquí y lo empaquetamos de nuevo en un archivo <code>.zip</code>.
-    </div>
-    <footer>
-      Generado en formato ZIP compatible con Android e iPhone.
-    </footer>
-  </main>
-</body>
-</html>
+<header><div class="brand"><img class="crest-img" src="escudo-cadista-pr.jpg" alt="Escudo Escuela Cadista Puerto Real"><div><h1>CADISTA P.R. SENIOR</h1><p>Gestión del equipo · Temporada 2026/2027</p></div></div></header>
+<div class="shell">
+<nav id="nav">
+<button class="active" data-page="inicio">⌂ Inicio</button>
+<button data-page="jugadores">♙ Jugadores</button>
+<button data-page="convocatorias">☑ Convocatorias</button>
+<button data-page="entrenamientos">⚽ Entrenamientos</button>
+<button data-page="partidos">▣ Partidos</button>
+<button data-page="estadisticas">▥ Estadísticas</button>
+<button data-page="incidencias">＋ Lesiones y sanciones</button>
+<button data-page="comunicacion">✉ Comunicación</button>
+</nav>
+<main>
+<div class="topline"><div><h2 id="pageTitle">Inicio</h2><div class="sub" id="pageSub">Resumen general del equipo</div></div><div class="actions"><button class="btn light" onclick="exportData()">Exportar datos</button><button class="btn yellow" onclick="document.getElementById('importFile').click()">Importar</button><input id="importFile" class="hidden" type="file" accept="application/json" onchange="importData(event)"></div></div>
+<div id="content"></div>
+</main>
+</div>
+<footer>Cadista P.R. Senior · Prototipo inicial. Los datos se guardan en este dispositivo/navegador.</footer>
+<div id="modal" class="modal hidden"><div class="dialog"><div id="modalBody"></div></div></div>
+<script>
+const blank={players:[],callups:[],trainings:[],matches:[],incidents:[],messages:[]};
+let db={...blank,...JSON.parse(localStorage.getItem('cadistaPR')||'{}')};
+const save=()=>localStorage.setItem('cadistaPR',JSON.stringify(db));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+let page='inicio';
+const titles={inicio:['Inicio','Resumen general del equipo'],jugadores:['Jugadores','Plantilla y datos de contacto'],convocatorias:['Convocatorias','Disponibilidad para cada partido'],entrenamientos:['Entrenamientos','Planificación y control de asistencia'],partidos:['Partidos','Calendario y resultados'],estadisticas:['Estadísticas','Rendimiento de la plantilla'],incidencias:['Lesiones y sanciones','Seguimiento de incidencias'],comunicacion:['Comunicación','Avisos y mensajes para el vestuario']};
+document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-page]');if(!b)return;page=b.dataset.page;render()});
+function setPage(p){page=p;render()}
+function render(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('pageTitle').textContent=titles[page][0];document.getElementById('pageSub').textContent=titles[page][1];let c=document.getElementById('content');c.innerHTML=views[page]();if(page==='estadisticas')drawStats()}
+const views={
+inicio:()=>`<div class="cards"><div class="card"><div class="metric">${db.players.length}</div><div class="metric-label">Jugadores</div></div><div class="card"><div class="metric">${db.matches.length}</div><div class="metric-label">Partidos registrados</div></div><div class="card"><div class="metric">${db.trainings.length}</div><div class="metric-label">Entrenamientos</div></div><div class="card"><div class="metric">${db.incidents.filter(x=>x.status!=='Resuelta').length}</div><div class="metric-label">Incidencias activas</div></div></div><div class="notice"><b>Primeros pasos:</b> añade la plantilla en «Jugadores», registra entrenamientos y partidos, y crea las convocatorias. Puedes exportar una copia de seguridad desde el botón superior.</div><div class="panel"><div class="row"><h3>Próximos eventos</h3><button class="btn small light" onclick="setPage('partidos')">Ver partidos</button></div>${[...db.matches.map(x=>({...x,type:'Partido'})),...db.trainings.map(x=>({...x,type:'Entrenamiento'}))].filter(x=>x.date>=today()).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5).map(x=>`<div class="item"><div><b>${esc(x.type)} · ${esc(x.opponent||x.title||'')}</b><div class="sub">${esc(x.date)} ${esc(x.time||'')}</div></div><span class="tag">${esc(x.place||'')}</span></div>`).join('')||'<div class="empty">Todavía no hay eventos futuros registrados.</div>'}</div><div class="panel"><h3>Accesos rápidos</h3><div class="actions"><button class="btn" onclick="openForm('player')">+ Añadir jugador</button><button class="btn" onclick="openForm('match')">+ Nuevo partido</button><button class="btn" onclick="openForm('training')">+ Entrenamiento</button><button class="btn" onclick="openForm('message')">+ Aviso al equipo</button></div></div>`,
+jugadores:()=>`<div class="panel"><div class="row"><h3>Plantilla (${db.players.length})</h3><button class="btn" onclick="openForm('player')">+ Añadir jugador</button></div>${table(['Jugador','Posición','Dorsal','Teléfono','Acciones'],db.players.map((p,i)=>[`<b>${esc(p.name)}</b>`,`<span class="tag">${esc(p.position)}</span>`,esc(p.number||'—'),esc(p.phone||'—'),`<button class="btn small light" onclick="editItem('players',${i},'player')">Editar</button> <button class="btn small danger" onclick="del('players',${i})">×</button>`]))}</div>`,
+convocatorias:()=>`<div class="panel"><div class="row"><h3>Listas de convocados</h3><button class="btn" onclick="openForm('callup')">+ Crear convocatoria</button></div>${db.callups.map((x,i)=>`<div class="item"><div><b>${esc(x.match)}</b><div class="sub">${esc(x.date)} · ${x.selected.length} convocados</div><div class="sub">${x.selected.map(esc).join(', ')}</div></div><button class="btn small danger" onclick="del('callups',${i})">Eliminar</button></div>`).join('')||'<div class="empty">No hay convocatorias. Crea una para seleccionar jugadores.</div>'}</div>`,
+entrenamientos:()=>`<div class="panel"><div class="row"><h3>Entrenamientos</h3><button class="btn" onclick="openForm('training')">+ Añadir entrenamiento</button></div>${table(['Fecha','Hora','Lugar','Asistencia','Acciones'],db.trainings.map((x,i)=>[esc(x.date),esc(x.time||'—'),esc(x.place||'—'),`${x.attended.length}/${db.players.length}`,`<button class="btn small light" onclick="attendance(${i})">Pasar lista</button> <button class="btn small danger" onclick="del('trainings',${i})">×</button>`]))}</div>`,
+partidos:()=>`<div class="panel"><div class="row"><h3>Calendario y resultados</h3><button class="btn" onclick="openForm('match')">+ Añadir partido</button></div>${table(['Fecha','Rival','Campo','Resultado','Acciones'],db.matches.map((x,i)=>[esc(x.date),`<b>${esc(x.opponent)}</b>`,esc(x.place||'—'),x.gf===''||x.ga===''?'Pendiente':`${esc(x.gf)} - ${esc(x.ga)}`,`<button class="btn small light" onclick="editItem('matches',${i},'match')">Editar</button> <button class="btn small danger" onclick="del('matches',${i})">×</button>`]))}</div>`,
+estadisticas:()=>`<div class="cards"><div class="card"><div class="metric">${db.matches.filter(x=>x.gf!==''&&x.ga!=='').length}</div><div class="metric-label">Partidos con resultado</div></div><div class="card"><div class="metric">${db.matches.reduce((n,x)=>n+(Number(x.gf)||0),0)}</div><div class="metric-label">Goles a favor</div></div><div class="card"><div class="metric">${db.matches.reduce((n,x)=>n+(Number(x.ga)||0),0)}</div><div class="metric-label">Goles en contra</div></div><div class="card"><div class="metric">${db.matches.filter(x=>x.gf!==''&&x.ga!==''&&Number(x.gf)>Number(x.ga)).length}</div><div class="metric-label">Victorias</div></div></div><div class="panel"><h3>Estadísticas individuales</h3>${table(['Jugador','Goles','Asistencias','Tarjetas'],db.players.map(p=>[esc(p.name),esc(p.goals||0),esc(p.assists||0),esc(p.cards||0)]))}</div><div class="panel"><h3>Actualizar estadísticas</h3><div class="sub">Edita la ficha de cada jugador desde el apartado Jugadores para actualizar goles, asistencias y tarjetas.</div></div>`,
+incidencias:()=>`<div class="panel"><div class="row"><h3>Incidencias registradas</h3><button class="btn" onclick="openForm('incident')">+ Nueva incidencia</button></div>${table(['Jugador','Tipo','Detalle','Estado','Acciones'],db.incidents.map((x,i)=>[esc(x.player),`<span class="tag">${esc(x.type)}</span>`,esc(x.detail),esc(x.status),`<button class="btn small light" onclick="toggleIncident(${i})">Cambiar estado</button> <button class="btn small danger" onclick="del('incidents',${i})">×</button>`]))}</div>`,
+comunicacion:()=>`<div class="panel"><div class="row"><h3>Avisos del equipo</h3><button class="btn" onclick="openForm('message')">+ Nuevo aviso</button></div>${db.messages.map((x,i)=>`<div class="item"><div><b>${esc(x.title)}</b><div class="sub">${esc(x.date)}</div><div>${esc(x.body)}</div></div><button class="btn small danger" onclick="del('messages',${i})">×</button></div>`).join('')||'<div class="empty">Todavía no hay avisos publicados.</div>'}<div class="notice">En esta primera versión los avisos se guardan en el dispositivo. Para que lleguen a todos los jugadores habrá que conectar la app a una base de datos y habilitar cuentas de usuario.</div></div>`
+};
+function table(head,rows){if(!rows.length)return '<div class="empty">No hay datos todavía.</div>';return `<div style="overflow-x:auto"><table><thead><tr>${head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function modal(content){document.getElementById('modalBody').innerHTML=content;document.getElementById('modal').classList.remove('hidden')}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+function field(label,name,type='text',value='',extra=''){return `<div class="field"><label>${label}</label><input name="${name}" type="${type}" value="${esc(value)}" ${extra}></div>`}
+function openForm(type,item={}){let title='',fields='',collection='';
+if(type==='player'){title='Ficha de jugador';collection='players';fields=field('Nombre y apellidos','name','text',item.name||'','required')+`<div class="formgrid">${field('Posición','position','text',item.position||'')}${field('Dorsal','number','number',item.number||'')}${field('Teléfono','phone','tel',item.phone||'')}${field('Correo electrónico','email','email',item.email||'')}${field('Goles','goals','number',item.goals??0)}${field('Asistencias','assists','number',item.assists??0)}${field('Tarjetas','cards','number',item.cards??0)}</div>`}
+if(type==='match'){title='Partido';collection='matches';fields=`<div class="formgrid">${field('Fecha','date','date',item.date||today(),'required')}${field('Hora','time','time',item.time||'')}${field('Equipo rival','opponent','text',item.opponent||'','required')}${field('Campo','place','text',item.place||'')}${field('Goles a favor','gf','number',item.gf??'')}${field('Goles en contra','ga','number',item.ga??'')}</div>`}
+if(type==='training'){title='Entrenamiento';collection='trainings';fields=`<div class="formgrid">${field('Fecha','date','date',item.date||today(),'required')}${field('Hora','time','time',item.time||'')}${field('Lugar','place','text',item.place||'')}</div>`}
+if(type==='callup'){title='Nueva convocatoria';collection='callups';fields=field('Partido / rival','match','text','','required')+field('Fecha','date','date',today(),'required')+`<div class="field"><label>Selecciona los convocados</label><div class="list">${db.players.map((p,i)=>`<label class="item"><span>${esc(p.name)}</span><input style="width:auto" type="checkbox" name="selected" value="${esc(p.name)}"></label>`).join('')||'<div class="empty">Añade primero jugadores a la plantilla.</div>'}</div></div>`}
+if(type==='incident'){title='Nueva incidencia';collection='incidents';fields=`<div class="formgrid"><div class="field"><label>Jugador</label><select name="player">${db.players.map(p=>`<option>${esc(p.name)}</option>`).join('')}</select></div><div class="field"><label>Tipo</label><select name="type"><option>Lesión</option><option>Sanción</option><option>Otro</option></select></div></div>`+field('Detalle','detail')+`<div class="field"><label>Estado</label><select name="status"><option>Activa</option><option>Resuelta</option></select></div>`}
+if(type==='message'){title='Aviso para el equipo';collection='messages';fields=field('Título','title','text','','required')+`<div class="field"><label>Mensaje</label><textarea name="body" required></textarea></div>`}
+modal(`<h3>${title}</h3><form id="dataForm">${fields}<div class="dialogfoot"><button type="button" class="btn light" onclick="closeModal()">Cancelar</button><button class="btn yellow">Guardar</button></div></form>`);
+document.getElementById('dataForm').onsubmit=e=>{e.preventDefault();let fd=new FormData(e.target),obj={};for(let [k,v] of fd.entries()){if(k==='selected'){(obj.selected??=[]).push(v)}else obj[k]=v}
+if(type==='callup')obj.selected??=[];if(type==='player'){obj.number=Number(obj.number)||'';['goals','assists','cards'].forEach(k=>obj[k]=Number(obj[k])||0)}
+if(type==='match'){obj.gf=obj.gf===''?'':Number(obj.gf);obj.ga=obj.ga===''?'':Number(obj.ga)}
+if(type==='training')obj.attended=[];if(type==='message')obj.date=today();
+db[collection].push(obj);save();closeModal();render()};
+}
+function editItem(collection,index,type){let item=db[collection][index];openForm(type,item);document.getElementById('dataForm').onsubmit=e=>{e.preventDefault();let fd=new FormData(e.target),obj={};for(let [k,v] of fd.entries())obj[k]=v;if(type==='player'){['goals','assists','cards','number'].forEach(k=>obj[k]=Number(obj[k])||0)}if(type==='match'){obj.gf=obj.gf===''?'':Number(obj.gf);obj.ga=obj.ga===''?'':Number(obj.ga)}db[collection][index]={...item,...obj};save();closeModal();render()}}
+function del(col,i){if(confirm('¿Eliminar este registro?')){db[col].splice(i,1);save();render()}}
+function attendance(i){let t=db.trainings[i],selected=new Set(t.attended||[]);modal(`<h3>Asistencia · ${esc(t.date)}</h3><div class="list">${db.players.map(p=>`<label class="item"><span>${esc(p.name)}</span><input style="width:auto" type="checkbox" value="${esc(p.name)}" ${selected.has(p.name)?'checked':''}></label>`).join('')}</div><div class="dialogfoot"><button class="btn light" onclick="closeModal()">Cancelar</button><button class="btn yellow" onclick="saveAttendance(${i})">Guardar asistencia</button></div>`)}
+function saveAttendance(i){db.trainings[i].attended=[...document.querySelectorAll('#modalBody input:checked')].map(x=>x.value);save();closeModal();render()}
+function toggleIncident(i){db.incidents[i].status=db.incidents[i].status==='Resuelta'?'Activa':'Resuelta';save();render()}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cadista-pr-senior-copia.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);db={...blank,...d};save();render();alert('Datos importados correctamente')}catch{alert('El archivo no es válido')}};r.readAsText(f)}
+function drawStats(){}
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+render();
+</script>
+</body></html>
