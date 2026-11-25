@@ -6,15 +6,15 @@
 <meta name="theme-color" content="#123f83">
 <title>ESCUELA CADISTA PR | Gestión de equipo</title>
 <style>
-:root{--blue:#123f83;--blue2:#0b2e63;--yellow:#f5c928;--bg:#f3f5f9;--ink:#172235;--muted:#697586;--line:#e1e6ef;--white:#fff;--red:#c53c3c;--green:#17834c}
+:root{--blue:#064a9b;--blue2:#073675;--yellow:#f6cc20;--yellow-soft:#fff7d6;--bg:#f4f7fc;--ink:#14233a;--muted:#65748b;--line:#dce5f1;--white:#fff;--red:#c53c3c;--green:#17834c}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-header{background:linear-gradient(115deg,var(--blue2),var(--blue));color:#fff;padding:18px max(16px,calc((100% - 1100px)/2));display:flex;align-items:center;gap:14px;box-shadow:0 3px 14px #0b2e6326}
+header{background:linear-gradient(115deg,var(--blue2),var(--blue));border-bottom:5px solid var(--yellow);color:#fff;padding:18px max(16px,calc((100% - 1100px)/2));display:flex;align-items:center;gap:14px;box-shadow:0 3px 14px #0b2e6326}
 .crest{width:76px;height:76px;object-fit:contain;background:#fff;border-radius:12px;padding:3px;flex:none}
 .club h1{font-size:clamp(18px,3vw,25px);margin:0;letter-spacing:.3px}.club p{margin:4px 0 0;color:#e3eafa;font-size:13px}
 main{max-width:1100px;margin:22px auto;padding:0 16px 40px}
 .tabs{display:flex;gap:8px;background:#e7ebf3;padding:5px;border-radius:13px;margin-bottom:18px}
 .tab{border:0;border-radius:10px;padding:12px 18px;flex:1;font-weight:750;font-size:15px;color:#536176;background:transparent;cursor:pointer}
-.tab.active{background:#fff;color:var(--blue);box-shadow:0 2px 8px #15294b14}
+.tab.active{background:var(--blue);color:#fff;box-shadow:inset 0 -3px 0 var(--yellow),0 2px 8px #15294b14}
 .panel{display:none}.panel.active{display:block}
 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #1a31500a}
 h2{font-size:20px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 17px}
@@ -25,10 +25,10 @@ input:focus,select:focus{outline:2px solid #9db8e9;border-color:var(--blue)}
 .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
 button{font:inherit;cursor:pointer}
 .btn{border:0;border-radius:10px;padding:11px 15px;font-weight:750;font-size:14px}
-.primary{background:var(--blue);color:#fff}.secondary{background:#edf1f7;color:var(--blue)}.danger{background:#fff0f0;color:var(--red)}
+.primary{background:var(--blue);color:#fff;border-bottom:3px solid var(--yellow)}.secondary{background:var(--yellow-soft);color:var(--blue2);border:1px solid #f0d66d}.danger{background:#fff0f0;color:var(--red)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .listhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
-.count{font-size:12px;font-weight:750;background:#edf2fa;color:var(--blue);padding:6px 10px;border-radius:30px}
+.count{font-size:12px;font-weight:750;background:var(--yellow-soft);color:var(--blue2);border:1px solid #f0d66d;padding:6px 10px;border-radius:30px}
 .tablewrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:600px}
 th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:#657187;padding:11px 9px;border-bottom:1px solid var(--line)}
@@ -38,9 +38,9 @@ tr:last-child td{border-bottom:0}
 .ok{background:#e7f6ed;color:var(--green)}.injured{background:#fff0ef;color:var(--red)}
 .rowbuttons{display:flex;gap:6px}.small{padding:7px 9px;font-size:12px}
 .empty{text-align:center;color:var(--muted);padding:24px 10px}
-.selectlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.position-block{margin:14px 0 17px}.position-heading{display:flex;align-items:center;gap:8px;color:var(--blue);font-size:14px;font-weight:850;padding:8px 11px;margin-bottom:8px;background:linear-gradient(90deg,var(--yellow-soft),#fff);border-left:5px solid var(--yellow);border-radius:7px}.position-heading small{margin-left:auto;color:var(--muted);font-weight:700;font-size:11px}.selectlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .playerpick{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}
-.playerpick:has(input:checked){border-color:var(--blue);background:#f1f5fc}
+.playerpick:has(input:checked){border-color:var(--blue);background:#fff9df;box-shadow:inset 4px 0 0 var(--yellow)}
 .playerpick input{width:19px;height:19px;accent-color:var(--blue);flex:none}
 .pickname{font-weight:750;font-size:14px;overflow-wrap:anywhere}.pickpos{font-size:12px;color:var(--muted);margin-top:2px}
 .pickcount{font-weight:800;color:var(--blue)}
@@ -48,13 +48,13 @@ tr:last-child td{border-bottom:0}
 .convtitle{background:var(--blue);color:#fff;padding:15px 17px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .convtitle h3{margin:0;font-size:18px}.convtitle span{font-size:13px;color:#e6edfa}
 .convbody{padding:15px;background:#fff}
-.convgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.convgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.conv-position{grid-column:1/-1;margin-top:8px;padding:8px 10px;background:var(--yellow-soft);border-left:5px solid var(--yellow);border-radius:7px;color:var(--blue);font-weight:850;font-size:13px}.match-details{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:13px}.match-detail{background:#f2f6fc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px}.match-detail b{color:var(--blue)}
 .convplayer{border:1px solid var(--line);border-radius:9px;padding:9px 10px;font-size:13px}
 .convplayer b{color:var(--blue);margin-right:6px}
 .notice{font-size:13px;color:var(--muted);margin-top:12px}
 footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
 @media(max-width:600px){header{padding:14px 16px}.crest{width:64px;height:64px}.formgrid,.selectlist,.convgrid{grid-template-columns:1fr}.card{padding:15px}.tab{padding:11px 8px;font-size:14px}main{margin-top:15px}.listhead{align-items:flex-start}}
-@media print{body{background:#fff}.no-print,header,.tabs,#playersPanel,.sub,.notice,footer{display:none!important}main{margin:0;padding:0}.panel{display:none!important}#callPanel{display:block!important}.card{border:0;box-shadow:none;padding:0}.convocatoria{border:1px solid #222}.convtitle{background:#fff!important;color:#111;border-bottom:1px solid #222}.convtitle span{color:#333}.convbody{padding:12px}.convplayer{break-inside:avoid}}
+@media print{body{background:#fff}.no-print,header,.tabs,#playersPanel,.sub,.notice,footer{display:none!important}main{margin:0;padding:0}.panel{display:none!important}#callPanel{display:block!important}.card{border:0;box-shadow:none;padding:0}.convocatoria{border:1px solid #222}.convtitle{background:#fff!important;color:var(--blue)!important;border-bottom:3px solid var(--yellow)}.convtitle span{color:#333}.convbody{padding:12px}.convplayer{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -102,6 +102,15 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
 
   <section id="callPanel" class="panel">
     <div class="card">
+      <h2>Datos del partido</h2>
+      <p class="sub">Completa la información que aparecerá en la convocatoria.</p>
+      <div class="formgrid">
+        <div class="field"><label for="matchDate">Fecha del partido</label><input id="matchDate" type="date"></div>
+        <div class="field"><label for="meetingTime">Hora de citación</label><input id="meetingTime" type="time"></div>
+        <div class="field" style="grid-column:1/-1"><label for="matchPlace">Lugar del partido</label><input id="matchPlace" type="text" maxlength="100" placeholder="Campo / localidad"></div>
+      </div>
+    </div>
+    <div class="card">
       <div class="listhead"><div><h2>Seleccionar convocatoria</h2><p class="sub" style="margin:5px 0 0">Marca los jugadores disponibles que quieres convocar.</p></div><span class="count"><span id="selectedCount">0</span>/18</span></div>
       <div id="availableList" class="selectlist"></div>
       <div id="noAvailable" class="empty">No hay jugadores disponibles. Añade jugadores o cambia su estado de lesión.</div>
@@ -111,7 +120,14 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
       <div class="listhead"><h2>Convocatoria final</h2><span class="count" id="finalCount">0 de 18</span></div>
       <div class="convocatoria">
         <div class="convtitle"><h3>ESCUELA CADISTA PR</h3><span>LISTA DE CONVOCADOS</span></div>
-        <div class="convbody"><div id="finalList" class="convgrid"></div><div id="emptyCall" class="empty">Selecciona jugadores para generar la convocatoria.</div></div>
+        <div class="convbody">
+          <div class="match-details">
+            <div class="match-detail"><b>Fecha:</b> <span id="matchDateView">Sin indicar</span></div>
+            <div class="match-detail"><b>Lugar:</b> <span id="matchPlaceView">Sin indicar</span></div>
+            <div class="match-detail"><b>Citación:</b> <span id="meetingTimeView">Sin indicar</span></div>
+          </div>
+          <div id="finalList" class="convgrid"></div><div id="emptyCall" class="empty">Selecciona jugadores para generar la convocatoria.</div>
+        </div>
       </div>
       <div class="actions no-print">
         <button class="btn primary" type="button" id="printBtn">Imprimir convocatoria</button>
@@ -123,11 +139,11 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
 <footer>ESCUELA CADISTA PR · Aplicación de gestión de equipo</footer>
 <script>
 const KEY='escuelaCadistaPR_v1';
-let players=[], selected=[], editingId=null;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');players=Array.isArray(saved.players)?saved.players:[];selected=Array.isArray(saved.selected)?saved.selected:[]}catch(e){}
+let players=[], selected=[], editingId=null, matchInfo={date:'',place:'',time:''};
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');players=Array.isArray(saved.players)?saved.players:[];selected=Array.isArray(saved.selected)?saved.selected:[];matchInfo=saved.matchInfo||matchInfo;}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function persist(){localStorage.setItem(KEY,JSON.stringify({players,selected}));}
+function persist(){localStorage.setItem(KEY,JSON.stringify({players,selected,matchInfo:{date:$('matchDate')?.value||matchInfo.date||'',place:$('matchPlace')?.value||'',time:$('meetingTime')?.value||''}}));}
 function available(){return players.filter(p=>p.injury==='no');}
 function renderPlayers(){
  $('playerRows').innerHTML=players.map(p=>`<tr><td><b>${esc(p.first)} ${esc(p.last)}</b></td><td>${esc(p.position)}</td><td><span class="status ${p.injury==='si'?'injured':'ok'}">${p.injury==='si'?'Lesionado':'Disponible'}</span></td><td class="no-print"><div class="rowbuttons"><button class="btn secondary small" onclick="editPlayer('${p.id}')">Editar</button><button class="btn danger small" onclick="deletePlayer('${p.id}')">Eliminar</button></div></td></tr>`).join('');
@@ -136,11 +152,24 @@ function renderPlayers(){
 }
 function renderCall(){
  const pool=available(); selected=selected.filter(id=>pool.some(p=>p.id===id)).slice(0,18);
- $('availableList').innerHTML=pool.map(p=>`<label class="playerpick"><input type="checkbox" value="${p.id}" ${selected.includes(p.id)?'checked':''} onchange="togglePlayer('${p.id}',this.checked)"><span><span class="pickname">${esc(p.first)} ${esc(p.last)}</span><span class="pickpos">${esc(p.position)}</span></span></label>`).join('');
+ const order=['Portero','Defensa','Centrocampista','Delantero'];
+ $('availableList').innerHTML=order.map(pos=>{
+   const group=pool.filter(p=>p.position===pos);
+   if(!group.length)return '';
+   return `<div class="position-block"><div class="position-heading">${pos}<small>${group.length} disponible${group.length===1?'':'s'}</small></div><div class="selectlist">${group.map(p=>`<label class="playerpick"><input type="checkbox" value="${p.id}" ${selected.includes(p.id)?'checked':''} onchange="togglePlayer('${p.id}',this.checked)"><span><span class="pickname">${esc(p.first)} ${esc(p.last)}</span><span class="pickpos">${esc(p.position)}</span></span></label>`).join('')}</div></div>`;
+ }).join('');
  $('noAvailable').style.display=pool.length?'none':'block';
  $('selectedCount').textContent=selected.length;$('finalCount').textContent=selected.length+' de 18';
  const chosen=selected.map(id=>players.find(p=>p.id===id)).filter(Boolean);
- $('finalList').innerHTML=chosen.map((p,i)=>`<div class="convplayer"><b>${String(i+1).padStart(2,'0')}.</b>${esc(p.first)} ${esc(p.last)} <span style="color:#697586">· ${esc(p.position)}</span></div>`).join('');
+ $('matchDateView').textContent=$('matchDate').value?new Date($('matchDate').value+'T12:00:00').toLocaleDateString('es-ES'):'Sin indicar';
+ $('matchPlaceView').textContent=$('matchPlace').value.trim()||'Sin indicar';
+ $('meetingTimeView').textContent=$('meetingTime').value||'Sin indicar';
+ let number=0;
+ $('finalList').innerHTML=order.map(pos=>{
+   const group=chosen.filter(p=>p.position===pos);
+   if(!group.length)return '';
+   return `<div class="conv-position">${pos} (${group.length})</div>`+group.map(p=>`<div class="convplayer"><b>${String(++number).padStart(2,'0')}.</b>${esc(p.first)} ${esc(p.last)}</div>`).join('');
+ }).join('');
  $('emptyCall').style.display=chosen.length?'none':'block';
  persist();
 }
@@ -161,6 +190,10 @@ $('cancelEdit').onclick=resetForm;
 $('clearCall').onclick=()=>{selected=[];renderCall();};
 $('printBtn').onclick=()=>window.print();
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));}));
+$('matchDate').value=matchInfo.date||'';
+$('matchPlace').value=matchInfo.place||'';
+$('meetingTime').value=matchInfo.time||'';
+['matchDate','matchPlace','meetingTime'].forEach(id=>$(id).addEventListener('input',()=>{matchInfo={date:$('matchDate').value,place:$('matchPlace').value,time:$('meetingTime').value};renderCall();}));
 render();
 </script>
 </body></html>
