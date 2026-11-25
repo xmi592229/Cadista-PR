@@ -144,17 +144,20 @@ const DEFAULT_PLAYERS=[{"id":"plantilla-inicial-01","first":"Jesús","last":"Val
 let players=DEFAULT_PLAYERS.slice(), selected=[], editingId=null, matchInfo={date:'',place:'',time:''};
 try{
  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
- if(Array.isArray(saved.players)){
+ // Primera carga de esta versión: sustituye la plantilla anterior por SOLO estos 25 jugadores.
+ // En las siguientes visitas respeta las altas, bajas y cambios que haga el equipo.
+ if(saved.rosterVersion===2 && Array.isArray(saved.players)){
    players=saved.players.slice();
-   const existing=new Set(players.map(p=>(String(p.first||'')+' '+String(p.last||'')).trim().toLocaleLowerCase('es')));
-   DEFAULT_PLAYERS.forEach(p=>{const full=(p.first+' '+p.last).toLocaleLowerCase('es');if(!existing.has(full)){players.push(p);existing.add(full);}});
+   selected=Array.isArray(saved.selected)?saved.selected:[];
+ }else{
+   players=DEFAULT_PLAYERS.slice();
+   selected=[];
  }
- selected=Array.isArray(saved.selected)?saved.selected:[];
  matchInfo=saved.matchInfo||matchInfo;
-}catch(e){players=DEFAULT_PLAYERS.slice();}
+}catch(e){players=DEFAULT_PLAYERS.slice();selected=[];}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function persist(){localStorage.setItem(KEY,JSON.stringify({players,selected,matchInfo:{date:$('matchDate')?.value||matchInfo.date||'',place:$('matchPlace')?.value||'',time:$('meetingTime')?.value||''}}));}
+function persist(){localStorage.setItem(KEY,JSON.stringify({rosterVersion:2,players,selected,matchInfo:{date:$('matchDate')?.value||matchInfo.date||'',place:$('matchPlace')?.value||'',time:$('meetingTime')?.value||''}}));}
 function available(){return players.filter(p=>p.injury==='no');}
 function renderPlayers(){
  $('playerRows').innerHTML=players.map(p=>`<tr><td><b>${esc(p.first)} ${esc(p.last)}</b></td><td>${esc(p.position)}</td><td><span class="status ${p.injury==='si'?'injured':'ok'}">${p.injury==='si'?'Lesionado':'Disponible'}</span></td><td class="no-print"><div class="rowbuttons"><button class="btn secondary small" onclick="editPlayer('${p.id}')">Editar</button><button class="btn danger small" onclick="deletePlayer('${p.id}')">Eliminar</button></div></td></tr>`).join('');
