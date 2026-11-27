@@ -48,7 +48,7 @@ tr:last-child td{border-bottom:0}
 .convtitle{background:var(--blue);color:#fff;padding:15px 17px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .convtitle h3{margin:0;font-size:18px}.convtitle span{font-size:13px;color:#e6edfa}
 .convbody{padding:15px;background:#fff}
-.convgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.conv-position{grid-column:1/-1;margin-top:8px;padding:8px 10px;background:var(--yellow-soft);border-left:5px solid var(--yellow);border-radius:7px;color:var(--blue);font-weight:850;font-size:13px}.match-details{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:13px}.match-detail{background:#f2f6fc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px}.match-detail b{color:var(--blue)}
+.convgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.conv-position{grid-column:1/-1;margin-top:8px;padding:8px 10px;background:var(--yellow-soft);border-left:5px solid var(--yellow);border-radius:7px;color:var(--blue);font-weight:850;font-size:13px}.match-details{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}.match-details.departure-details{margin-top:18px}.match-detail{background:#f2f6fc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px}.match-detail b{color:var(--blue)}
 .convplayer{border:1px solid var(--line);border-radius:9px;padding:9px 10px;font-size:13px}
 .convplayer b{color:var(--blue);margin-right:6px}
 .notice{font-size:13px;color:var(--muted);margin-top:12px}
@@ -124,9 +124,11 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
         <div class="convtitle"><h3>ESCUELA CADISTA PR</h3><span>LISTA DE CONVOCADOS</span></div>
         <div class="convbody">
           <div class="match-details">
-            <div class="match-detail"><b>🏟️ Campo de fútbol:</b> <span id="matchPlaceView">Sin indicar</span></div>
-            <div class="match-detail"><b>🕒 Hora de partido:</b> <span id="meetingTimeView">Sin indicar</span></div>
             <div class="match-detail"><b>📅 Fecha del partido:</b> <span id="matchDateView">Sin indicar</span></div>
+            <div class="match-detail"><b>🕒 Hora de partido:</b> <span id="meetingTimeView">Sin indicar</span></div>
+            <div class="match-detail"><b>🏟️ Campo de fútbol:</b> <span id="matchPlaceView">Sin indicar</span></div>
+          </div>
+          <div class="match-details departure-details">
             <div class="match-detail"><b>🚍 Lugar de salida:</b> <span id="departurePlaceView">Sin indicar</span></div>
             <div class="match-detail"><b>🕒 Hora de salida:</b> <span id="departureTimeView">Sin indicar</span></div>
           </div>
@@ -144,7 +146,7 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
 <footer>ESCUELA CADISTA PR · Aplicación de gestión de equipo</footer>
 <script>
 const KEY='escuelaCadistaPR_v1';
-const DEFAULT_PLAYERS=[{"id":"plantilla-inicial-01","first":"Jesús","last":"Valenzuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-02","first":"Manuel","last":"Orihuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-03","first":"Daniel","last":"Garrido","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-04","first":"Álvaro","last":"Martínez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-05","first":"Alberto","last":"Alcedo","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-06","first":"Mario","last":"Heredia","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-07","first":"Alejandro","last":"Mendoza","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-08","first":"Alejandro","last":"Castañeda","position":"Portero","injury":"no"},{"id":"plantilla-inicial-09","first":"Daniel","last":"Romero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-10","first":"Rafael","last":"Fopiano","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-11","first":"Marco","last":"Amosa","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-12","first":"Aníbal","last":"Bruzo","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-13","first":"Adrián","last":"Payares","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-14","first":"Manuel","last":"Marchante","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-15","first":"Lucas","last":"Cordero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-16","first":"Mario","last":"Bravo","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-17","first":"Daniel","last":"Rojas","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-18","first":"Antonio","last":"Jiménez","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-19","first":"Marcos","last":"Mateos","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-20","first":"Marouane","last":"El Jamali","position":"Portero","injury":"no"},{"id":"plantilla-inicial-21","first":"Christian","last":"Vélez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-22","first":"Antonio","last":"Hermida","position":"Portero","injury":"no"},{"id":"plantilla-inicial-23","first":"Alfonso","last":"Caballero","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-24","first":"José Luis","last":"Galán","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-25","first":"Daniel","last":"Ramírez","position":"Centrocampista","injury":"no"}];
+const DEFAULT_PLAYERS=[{"id":"plantilla-inicial-01","first":"Jesús","last":"Valenzuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-02","first":"Manuel","last":"Orihuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-03","first":"Daniel","last":"Garrido","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-04","first":"Álvaro","last":"Martínez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-05","first":"Alberto","last":"Alcedo","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-06","first":"Mario","last":"Heredia","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-07","first":"Alejandro","last":"Mendoza","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-08","first":"Alejandro","last":"Castañeda","position":"Portero","injury":"no"},{"id":"plantilla-inicial-09","first":"Daniel","last":"Romero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-10","first":"Rafael","last":"Fopiani","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-11","first":"Marco","last":"Amosa","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-12","first":"Aníbal","last":"Bruzo","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-13","first":"Adrián","last":"Payares","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-14","first":"Manuel","last":"Marchante","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-15","first":"Lucas","last":"Cordero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-16","first":"Mario","last":"Bravo","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-17","first":"Daniel","last":"Rojas","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-18","first":"Antonio","last":"Jiménez","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-19","first":"Marcos","last":"Mateos","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-20","first":"Marouane","last":"El Jamali","position":"Portero","injury":"no"},{"id":"plantilla-inicial-21","first":"Christian","last":"Vélez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-22","first":"Antonio","last":"Hermida","position":"Portero","injury":"no"},{"id":"plantilla-inicial-23","first":"Alfonso","last":"Caballero","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-24","first":"José Luis","last":"Galán","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-25","first":"Daniel","last":"Ramírez","position":"Centrocampista","injury":"no"}];
 let players=DEFAULT_PLAYERS.slice(), selected=[], editingId=null, matchInfo={date:'',place:'',time:'',departurePlace:'',departureTime:''};
 try{
  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
@@ -157,6 +159,7 @@ try{
    players=DEFAULT_PLAYERS.slice();
    selected=[];
  }
+ players=players.map(p=>p.first==='Rafael' && p.last==='Fopiano' ? {...p,last:'Fopiani'} : p);
  matchInfo=saved.matchInfo||matchInfo;
 }catch(e){players=DEFAULT_PLAYERS.slice();selected=[];}
 const $=id=>document.getElementById(id);
@@ -216,11 +219,12 @@ $('whatsappBtn').onclick=()=>{
  const time=$('meetingTime').value||'Sin indicar';
  const departurePlace=$('departurePlace').value.trim()||'Sin indicar';
  const departureTime=$('departureTime').value||'Sin indicar';
- let message='*🏟️ Campo de fútbol: '+place+'*\n';
+ let message='*📅 Fecha del partido: '+date+'*\n';
  message+='*🕒 Hora de partido: '+time+'*\n';
- message+='*📅 Fecha del partido: '+date+'*\n';
+ message+='*🏟️ Campo de fútbol: '+place+'*\n\n';
  message+='*🚍 Lugar de salida: '+departurePlace+'*\n';
- message+='*🕒 Hora de salida: '+departureTime+'*\n\n';
+ message+='*🕒 Hora de salida: '+departureTime+'*\n';
+ message+='*¡Recordar estar siempre una hora y treinta minutos antes del partido, en el campo donde juguemos!*\n\n';
  chosen.forEach(p=>message+=p.first+' '+p.last+'\n');
  const url='https://wa.me/?text='+encodeURIComponent(message.trim());
  window.open(url,'_blank','noopener,noreferrer');
