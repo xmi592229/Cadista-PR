@@ -108,6 +108,8 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
         <div class="field"><label for="matchDate">Fecha del partido</label><input id="matchDate" type="date"></div>
         <div class="field"><label for="meetingTime">Hora de citación</label><input id="meetingTime" type="time"></div>
         <div class="field" style="grid-column:1/-1"><label for="matchPlace">Lugar del partido</label><input id="matchPlace" type="text" maxlength="100" placeholder="Campo / localidad"></div>
+        <div class="field"><label for="departurePlace">Lugar de salida</label><input id="departurePlace" type="text" maxlength="100" placeholder="Desde dónde sale el equipo"></div>
+        <div class="field"><label for="departureTime">Hora de salida</label><input id="departureTime" type="time"></div>
       </div>
     </div>
     <div class="card">
@@ -141,7 +143,7 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
 <script>
 const KEY='escuelaCadistaPR_v1';
 const DEFAULT_PLAYERS=[{"id":"plantilla-inicial-01","first":"Jesús","last":"Valenzuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-02","first":"Manuel","last":"Orihuela","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-03","first":"Daniel","last":"Garrido","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-04","first":"Álvaro","last":"Martínez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-05","first":"Alberto","last":"Alcedo","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-06","first":"Mario","last":"Heredia","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-07","first":"Alejandro","last":"Mendoza","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-08","first":"Alejandro","last":"Castañeda","position":"Portero","injury":"no"},{"id":"plantilla-inicial-09","first":"Daniel","last":"Romero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-10","first":"Rafael","last":"Fopiano","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-11","first":"Marco","last":"Amosa","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-12","first":"Aníbal","last":"Bruzo","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-13","first":"Adrián","last":"Payares","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-14","first":"Manuel","last":"Marchante","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-15","first":"Lucas","last":"Cordero","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-16","first":"Mario","last":"Bravo","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-17","first":"Daniel","last":"Rojas","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-18","first":"Antonio","last":"Jiménez","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-19","first":"Marcos","last":"Mateos","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-20","first":"Marouane","last":"El Jamali","position":"Portero","injury":"no"},{"id":"plantilla-inicial-21","first":"Christian","last":"Vélez","position":"Defensa","injury":"no"},{"id":"plantilla-inicial-22","first":"Antonio","last":"Hermida","position":"Portero","injury":"no"},{"id":"plantilla-inicial-23","first":"Alfonso","last":"Caballero","position":"Centrocampista","injury":"no"},{"id":"plantilla-inicial-24","first":"José Luis","last":"Galán","position":"Delantero","injury":"no"},{"id":"plantilla-inicial-25","first":"Daniel","last":"Ramírez","position":"Centrocampista","injury":"no"}];
-let players=DEFAULT_PLAYERS.slice(), selected=[], editingId=null, matchInfo={date:'',place:'',time:''};
+let players=DEFAULT_PLAYERS.slice(), selected=[], editingId=null, matchInfo={date:'',place:'',time:'',departurePlace:'',departureTime:''};
 try{
  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
  // Primera carga de esta versión: sustituye la plantilla anterior por SOLO estos 25 jugadores.
@@ -157,7 +159,7 @@ try{
 }catch(e){players=DEFAULT_PLAYERS.slice();selected=[];}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function persist(){localStorage.setItem(KEY,JSON.stringify({rosterVersion:2,players,selected,matchInfo:{date:$('matchDate')?.value||matchInfo.date||'',place:$('matchPlace')?.value||'',time:$('meetingTime')?.value||''}}));}
+function persist(){localStorage.setItem(KEY,JSON.stringify({rosterVersion:2,players,selected,matchInfo:{date:$('matchDate')?.value||matchInfo.date||'',place:$('matchPlace')?.value||'',time:$('meetingTime')?.value||'',departurePlace:$('departurePlace')?.value||'',departureTime:$('departureTime')?.value||''}}));}
 function available(){return players.filter(p=>p.injury==='no');}
 function renderPlayers(){
  $('playerRows').innerHTML=players.map(p=>`<tr><td><b>${esc(p.first)} ${esc(p.last)}</b></td><td>${esc(p.position)}</td><td><span class="status ${p.injury==='si'?'injured':'ok'}">${p.injury==='si'?'Lesionado':'Disponible'}</span></td><td class="no-print"><div class="rowbuttons"><button class="btn secondary small" onclick="editPlayer('${p.id}')">Editar</button><button class="btn danger small" onclick="deletePlayer('${p.id}')">Eliminar</button></div></td></tr>`).join('');
@@ -212,6 +214,13 @@ $('whatsappBtn').onclick=()=>{
  message+='🕒 '+time+'\n';
  message+='📅 '+date+'\n\n';
  chosen.forEach(p=>message+=p.first+' '+p.last+'\n');
+ const departurePlace=$('departurePlace').value.trim();
+ const departureTime=$('departureTime').value;
+ if(departurePlace||departureTime){
+   message+='\n';
+   if(departurePlace)message+='*🚍 Lugar de salida: '+departurePlace+'*\n';
+   if(departureTime)message+='*🕒 Hora de salida: '+departureTime+'*\n';
+ }
  const url='https://wa.me/?text='+encodeURIComponent(message.trim());
  window.open(url,'_blank','noopener,noreferrer');
 };
@@ -219,7 +228,9 @@ document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>
 $('matchDate').value=matchInfo.date||'';
 $('matchPlace').value=matchInfo.place||'';
 $('meetingTime').value=matchInfo.time||'';
-['matchDate','matchPlace','meetingTime'].forEach(id=>$(id).addEventListener('input',()=>{matchInfo={date:$('matchDate').value,place:$('matchPlace').value,time:$('meetingTime').value};renderCall();}));
+$('departurePlace').value=matchInfo.departurePlace||'';
+$('departureTime').value=matchInfo.departureTime||'';
+['matchDate','matchPlace','meetingTime','departurePlace','departureTime'].forEach(id=>$(id).addEventListener('input',()=>{matchInfo={date:$('matchDate').value,place:$('matchPlace').value,time:$('meetingTime').value,departurePlace:$('departurePlace').value,departureTime:$('departureTime').value};renderCall();}));
 render();
 </script>
 </body></html>
