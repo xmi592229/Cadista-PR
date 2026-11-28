@@ -223,9 +223,9 @@ $('whatsappBtn').onclick=()=>{
  message+='*Hora de partido: '+time+'*\n';
  message+='*Campo de fútbol: '+place+'*\n\n';
  message+='*Lugar de salida: '+departurePlace+'*\n';
- message+='*Hora de salida: '+departureTime+'*\n';
- message+='*¡Recordar estar siempre una hora y treinta minutos antes del partido, en el campo donde juguemos!*\n\n';
- message+='*CONVOCATORIA*\n';
+ message+='*Hora de salida: '+departureTime+'*\n\n\n\n\n\n';
+ message+='¡Recordar estar siempre una hora y treinta minutos antes del partido en el campo donde juguemos!\n\n\n';
+ message+='*CONVOCATORIA*\n\n\n';
  chosen.forEach(p=>message+=p.first+' '+p.last+'\n');
  message+='\n*Llevar ropa de entreno y vestidos con ropa de paseo*';
  const url='https://wa.me/?text='+encodeURIComponent(message.trim());
