@@ -106,8 +106,8 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
       <p class="sub">Completa la información que aparecerá en la convocatoria.</p>
       <div class="formgrid">
         <div class="field"><label for="matchDate">Fecha del partido</label><input id="matchDate" type="date"></div>
-        <div class="field"><label for="meetingTime">🕒 Hora de partido:</label><input id="meetingTime" type="time"></div>
-        <div class="field" style="grid-column:1/-1"><label for="matchPlace">🏟️ Campo de fútbol:</label><input id="matchPlace" type="text" maxlength="100" placeholder="Campo / localidad"></div>
+        <div class="field"><label for="meetingTime">Hora de partido:</label><input id="meetingTime" type="time"></div>
+        <div class="field" style="grid-column:1/-1"><label for="matchPlace">Campo de fútbol:</label><input id="matchPlace" type="text" maxlength="100" placeholder="Campo / localidad"></div>
         <div class="field"><label for="departurePlace">Lugar de salida</label><input id="departurePlace" type="text" maxlength="100" placeholder="Desde dónde sale el equipo"></div>
         <div class="field"><label for="departureTime">Hora de salida</label><input id="departureTime" type="time"></div>
       </div>
@@ -124,13 +124,13 @@ footer{text-align:center;color:#8a94a5;font-size:12px;padding:15px}
         <div class="convtitle"><h3>ESCUELA CADISTA PR</h3><span>LISTA DE CONVOCADOS</span></div>
         <div class="convbody">
           <div class="match-details">
-            <div class="match-detail"><b>📅 Fecha del partido:</b> <span id="matchDateView">Sin indicar</span></div>
-            <div class="match-detail"><b>🕒 Hora de partido:</b> <span id="meetingTimeView">Sin indicar</span></div>
-            <div class="match-detail"><b>🏟️ Campo de fútbol:</b> <span id="matchPlaceView">Sin indicar</span></div>
+            <div class="match-detail"><b>Fecha del partido:</b> <span id="matchDateView">Sin indicar</span></div>
+            <div class="match-detail"><b>Hora de partido:</b> <span id="meetingTimeView">Sin indicar</span></div>
+            <div class="match-detail"><b>Campo de fútbol:</b> <span id="matchPlaceView">Sin indicar</span></div>
           </div>
           <div class="match-details departure-details">
-            <div class="match-detail"><b>🚍 Lugar de salida:</b> <span id="departurePlaceView">Sin indicar</span></div>
-            <div class="match-detail"><b>🕒 Hora de salida:</b> <span id="departureTimeView">Sin indicar</span></div>
+            <div class="match-detail"><b>Lugar de salida:</b> <span id="departurePlaceView">Sin indicar</span></div>
+            <div class="match-detail"><b>Hora de salida:</b> <span id="departureTimeView">Sin indicar</span></div>
           </div>
           <div id="finalList" class="convgrid"></div><div id="emptyCall" class="empty">Selecciona jugadores para generar la convocatoria.</div>
         </div>
@@ -219,13 +219,15 @@ $('whatsappBtn').onclick=()=>{
  const time=$('meetingTime').value||'Sin indicar';
  const departurePlace=$('departurePlace').value.trim()||'Sin indicar';
  const departureTime=$('departureTime').value||'Sin indicar';
- let message='*📅 Fecha del partido: '+date+'*\n';
- message+='*🕒 Hora de partido: '+time+'*\n';
- message+='*🏟️ Campo de fútbol: '+place+'*\n\n';
- message+='*🚍 Lugar de salida: '+departurePlace+'*\n';
- message+='*🕒 Hora de salida: '+departureTime+'*\n';
+ let message='*Fecha del partido: '+date+'*\n';
+ message+='*Hora de partido: '+time+'*\n';
+ message+='*Campo de fútbol: '+place+'*\n\n';
+ message+='*Lugar de salida: '+departurePlace+'*\n';
+ message+='*Hora de salida: '+departureTime+'*\n';
  message+='*¡Recordar estar siempre una hora y treinta minutos antes del partido, en el campo donde juguemos!*\n\n';
+ message+='*CONVOCATORIA*\n';
  chosen.forEach(p=>message+=p.first+' '+p.last+'\n');
+ message+='\n*Llevar ropa de entreno y vestidos con ropa de paseo*';
  const url='https://wa.me/?text='+encodeURIComponent(message.trim());
  window.open(url,'_blank','noopener,noreferrer');
 };
